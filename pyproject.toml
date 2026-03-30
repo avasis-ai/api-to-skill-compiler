@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "api-to-skill-compiler"
+version = "0.1.0"
+description = "Instantly convert any REST API into an autonomous agent skill"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+authors = [
+    { name = "Avasis AI", email = "contact@avasis.ai" }
+]
+maintainers = [
+    { name = "Avasis AI", email = "contact@avasis.ai" }
+]
+keywords = [
+    "api",
+    "openapi",
+    "swagger",
+    "agent",
+    "skill",
+    "compiler",
+    "rest",
+    "automation"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Text Processing",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "click>=8.0",
+    "pyyaml>=6.0",
+    "jsonschema>=4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/avasis-ai/api-to-skill-compiler"
+Documentation = "https://github.com/avasis-ai/api-to-skill-compiler#readme"
+Repository = "https://github.com/avasis-ai/api-to-skill-compiler.git"
+Issues = "https://github.com/avasis-ai/api-to-skill-compiler/issues"
+
+[project.scripts]
+api-to-skill = "api_to_skill_compiler.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/api_to_skill_compiler"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers"
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
